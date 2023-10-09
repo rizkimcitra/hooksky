@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepare": "husky install",
+    "commit": "cz"
   },
   "keywords": [
     "react hooks"
@@ -19,7 +20,10 @@
     "@types/react": "^18.2.25",
     "@typescript-eslint/eslint-plugin": "^6.7.4",
     "@typescript-eslint/parser": "^6.7.4",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.51.0",
+    "lint-staged": "^14.0.1",
     "prettier": "^3.0.3",
     "terser": "^5.21.0",
     "tsup": "^7.2.0",
@@ -27,5 +31,16 @@
   },
   "dependencies": {
     "react": "^18.2.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "lint-staged": {
+    "**/*.{ts,tsx}": "eslint",
+    "**/*.{js,jsx,ts,tsx,mdx,md,css}": [
+      "prettier -w -c ./.prettierrc.json"
+    ]
   }
 }
