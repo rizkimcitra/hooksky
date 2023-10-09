@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useEffect } from "react";
 import type { TVoidFN } from "../types/common";
 
 /**
@@ -14,7 +14,7 @@ import type { TVoidFN } from "../types/common";
  * callback function will be executed. By default, it is set to 250 milliseconds.
  */
 export function useTimeoutFn<TDeps = never>(callback: TVoidFN, deps: Array<TDeps>, timeout = 250) {
-  useCallback(() => {
+  useEffect(() => {
     const timeoutId = setTimeout(callback, timeout);
 
     return () => {
