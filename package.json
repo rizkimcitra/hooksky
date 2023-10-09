@@ -20,7 +20,7 @@
     "prepare": "husky install",
     "commit": "cz",
     "build": "tsup ./src",
-    "release": "release-it"
+    "release": "pnpm build && pnpm publish"
   },
   "dependencies": {
     "react": "^18.2.0"
