@@ -1,8 +1,12 @@
 {
   "git": {
-    "commitMessage": "chore: release v${version}"
+    "commitMessage": "chore: release v${version}",
+
+    "push": true,
+    "pushRepo": "git@github.com:rizkimcitra/hooksky.git"
   },
   "github": {
-    "release": true
+    "release": true,
+    "releaseName": "${packageName}-v${version}"
   }
 }
