@@ -1,0 +1,31 @@
+{
+  "name": "hooksky",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react hooks"
+  ],
+  "author": {
+    "name": "Rizki Maulana Citra",
+    "email": "rmaulana.citra@gmail.com",
+    "url": "https://rizkicitra.dev"
+  },
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@types/react": "^18.2.25",
+    "@typescript-eslint/eslint-plugin": "^6.7.4",
+    "@typescript-eslint/parser": "^6.7.4",
+    "eslint": "^8.51.0",
+    "prettier": "^3.0.3",
+    "terser": "^5.21.0",
+    "tsup": "^7.2.0",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "react": "^18.2.0"
+  }
+}
