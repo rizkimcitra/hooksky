@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import type { TVoidFN } from "../types/common";
 
 /**
  * The `useTimeoutFn` function is a TypeScript function that takes a callback function, an array of
@@ -13,12 +12,16 @@ import type { TVoidFN } from "../types/common";
  * @param [timeout=250] - The timeout parameter is the duration in milliseconds after which the
  * callback function will be executed. By default, it is set to 250 milliseconds.
  */
-export function useTimeoutFn<TDeps = never>(callback: TVoidFN, deps: Array<TDeps>, timeout = 250) {
+export function useTimeoutFn<TDeps = never>(
+  callback: () => void,
+  deps?: Array<TDeps>,
+  timeout = 250,
+) {
   useEffect(() => {
     const timeoutId = setTimeout(callback, timeout);
 
     return () => {
       clearTimeout(timeoutId);
     };
-  }, [...deps]);
+  }, deps);
 }

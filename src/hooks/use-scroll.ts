@@ -1,7 +1,6 @@
 import { useSyncExternalStore } from "react";
-import type { TVoidFN } from "../types/common";
 
-function subscribe(listener: TVoidFN) {
+function subscribe(listener: () => void) {
   window.addEventListener("scroll", listener);
 
   return () => {

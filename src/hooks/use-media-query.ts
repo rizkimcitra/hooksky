@@ -1,5 +1,4 @@
 import { useSyncExternalStore } from "react";
-import type { TVoidFN } from "../types/common";
 
 function getSnapshot(mediaQuery: string) {
   return () => {
@@ -8,7 +7,7 @@ function getSnapshot(mediaQuery: string) {
 }
 
 function subscribe(mediaQuery: string) {
-  return (listener: TVoidFN) => {
+  return (listener: () => void) => {
     window.matchMedia(mediaQuery).addEventListener("change", listener);
 
     return () => {
