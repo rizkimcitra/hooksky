@@ -9,7 +9,9 @@ export default defineConfig((options) => {
     sourcemap: false,
     clean: true,
     treeshake: true,
-    dts: true,
+    dts: {
+      entry: "src/index.ts",
+    },
     keepNames: true,
     name: "hooksky",
     platform: "neutral",
