@@ -22,9 +22,6 @@
     "build": "tsup ./src",
     "release": "pnpm build && pnpm publish"
   },
-  "dependencies": {
-    "react": "^18.2.0"
-  },
   "devDependencies": {
     "@types/react": "^18.2.25",
     "@typescript-eslint/eslint-plugin": "^6.7.4",
@@ -35,9 +32,14 @@
     "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
     "prettier": "^3.0.3",
+    "react": "^18.2.0",
     "terser": "^5.21.0",
     "tsup": "^7.2.0",
     "typescript": "^5.2.2"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
   },
   "license": "Apache-2.0",
   "keywords": [
