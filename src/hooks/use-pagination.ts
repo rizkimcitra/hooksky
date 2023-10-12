@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { useDebounceValue } from "..";
+import { useDebounceValue } from "./use-debounce-value";
 
 export type TUsePaginationValue = {
   /**
