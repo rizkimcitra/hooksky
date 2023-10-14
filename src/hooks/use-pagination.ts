@@ -27,6 +27,12 @@ export type TUsePaginationOptions = {
   searchTimeout?: number;
 };
 
+/**
+ * usePagination hooks is TypeScript hooks to manage your pagination state, such as page, limit, and search value
+ * pagination usually have those fundamental state
+ * @param options set your initial value, and timeout number *in millisecond* for the debounced search hooks to run
+ * @returns
+ */
 export function usePagination(options?: TUsePaginationOptions) {
   const [state, setState] = useState<TUsePaginationValue>({
     limit: options?.initialValue?.limit ?? 10,
@@ -37,13 +43,16 @@ export function usePagination(options?: TUsePaginationOptions) {
   const debouncedSearch = useDebounceValue(state.search, options?.searchTimeout ?? 250);
 
   const changeSearch = useCallback((search: string) => {
-    setState((prev) => ({ limit: prev.limit, page: prev.page, search }));
+    setState((prev) => ({ ...prev, search }));
   }, []);
   const nextPage = useCallback(() => {
     setState((prev) => ({ ...prev, page: prev.page + 1 }));
   }, []);
   const prevPage = useCallback(() => {
-    setState((prev) => ({ ...prev, page: prev.page - 1 }));
+    setState((prev) => {
+      if (prev.page === 1) return prev;
+      return { ...prev, page: prev.page - 1 };
+    });
   }, []);
   const changePage = useCallback((page: number) => {
     setState((prev) => ({ ...prev, page }));
@@ -60,10 +69,9 @@ export function usePagination(options?: TUsePaginationOptions) {
     changeLimit,
   };
 
-  const values: TUsePaginationValue = {
-    search: debouncedSearch,
-    limit: state.limit,
-    page: state.page,
+  const values = {
+    ...state,
+    debouncedSearch,
   };
 
   return [values, handlers] as const;
